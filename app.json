@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Smart Shopping Admin",
+    "slug": "Smart-Shopping-Admin",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.4.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#8cc8c8"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.FYP.SmartShoppingApp",
+      "buildNumber": "1.4.0"
+    },
+    "android": {
+      "package": "com.FYP.SmartShoppingApp",
+      "versionCode": 1
+    }
+  }
+}
