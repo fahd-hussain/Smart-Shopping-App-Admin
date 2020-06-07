@@ -5,7 +5,7 @@ import { Card, Left, Right, Fab } from "native-base";
 import { Button } from "react-native-paper";
 import axios from "axios";
 // local imports
-import { updateStore, fetchShelves, fetchStore } from "../../../redux";
+import { updateStore, fetchShelves, fetchStore, emptyStore } from "../../../redux";
 import styles from "./styles";
 import baseUrl from "../../../constants/baseUrl";
 import color from "../../../constants/color";
@@ -143,11 +143,16 @@ class CreateStoreScreen extends Component {
         // console.log(element);
         this.setState({ shelf: new Object({ name: element.name, _id: element._id }) });
     };
-
+_isEmpty = (obj) => {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
+        }
+        return true;
+    }
     render() {
         const { store, shelves, name, price, shelf, barcode, isLoading } = this.state;
 
-        // console.log(store, typeof store);
         if (isLoading) {
             return <LoadingScreen />;
         }
@@ -170,8 +175,9 @@ class CreateStoreScreen extends Component {
                                     <Text style={styles.listItem}>{item.name}</Text>
                                     <Text>Code: {item.barcode}</Text>
                                 </View>
+                                {/* {console.log(item)} */}
                                 <Text style={styles.listItem}>Price: {(item.price / 100).toFixed(2)} RS</Text>
-                                <Text style={styles.listItem}>Shelf: {item.shelf.name}</Text>
+                                {/* <Text style={styles.listItem}>Shelf: {item.shelf.name}</Text> */}
                             </Card>
                         </TouchableOpacity>
                     )}
@@ -195,6 +201,9 @@ class CreateStoreScreen extends Component {
                         onPress={() => this._pushToDatabase()}
                     >
                         Done
+                    </Button>
+                    <Button onPress={() => this.props.emptyStore()}>
+                        empty cart
                     </Button>
                 </View>
                 {/* Add item modal */}
@@ -286,6 +295,7 @@ const mapDispatchToProps = (dispatch) => {
         updateStore: (data) => dispatch(updateStore(data)),
         fetchShelves: () => dispatch(fetchShelves()),
         fetchStore: () => dispatch(fetchStore()),
+        emptyStore: () => dispatch(emptyStore())
     };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CreateStoreScreen);

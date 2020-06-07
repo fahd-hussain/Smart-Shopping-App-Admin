@@ -43,9 +43,36 @@ class BarCodeScannerScreen extends Component {
     //     this.props.navigation.navigate("Map");
     // };
 
+    _updateDatabase = () => {
+        const { token } = this.props.token;
+        const _id = this.state.data._id
+
+        this.setState({ isLoading: true });
+        let data = JSON.stringify({ paid: true })
+
+        console.log(token, _id, data)
+
+        axios(`${baseUrl}cart/${_id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+            },
+            data: { paid: true }
+        })
+            .then((res) => {
+                console.log("cart update database");
+                this.setState({ isLoading: false });
+            })
+            .catch((error) => {
+                console.log("error", error);
+                this.setState({ isLoading: false });
+            });
+    };
+
     render() {
         const { hasCameraPermission, scanned, detailModal, data, isLoading } = this.state;
-        console.log(data);
+        // console.log(data);
         if (hasCameraPermission === null) {
             return (
                 <View style={styles.container}>
@@ -132,7 +159,7 @@ class BarCodeScannerScreen extends Component {
                                 color={color[4]}
                                 onPress={() => {
                                     this.setState({ detailModal: false, scanned: false });
-                                    this._addToCart();
+                                    this._updateDatabase();
                                 }}
                             >
                                 Paid
@@ -202,7 +229,7 @@ class BarCodeScannerScreen extends Component {
 
     _showDetails = (data) => {
         this.setState({ data: data });
-        console.log(data, typeof data);
+        // console.log(data, typeof data);
 
         // this.setState({ data: Object.assign({ quantity: 1, totalPrice: data[0].price }, this.state.data) });
     };
@@ -218,13 +245,11 @@ class BarCodeScannerScreen extends Component {
 const mapStateToProps = (state) => {
     return {
         token: state.token,
-        cart: state.cart,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateCart: (data) => dispatch(updateCart(data)),
     };
 };
 

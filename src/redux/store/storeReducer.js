@@ -1,6 +1,6 @@
 const initState = {
     loading: false,
-    store: "",
+    store: [],
     stores: "",
     error: "",
 };

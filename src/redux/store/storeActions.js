@@ -38,6 +38,10 @@ export const updateStore = (data) => (dispatch) => {
     return dispatch(updateStoreSuccess(data));
 };
 
+export const emptyStore = () => (dispatch) => {
+    return dispatch(updateStoreSuccess([]));
+};
+
 export const fetchStore = () => (dispatch) => {
     dispatch(fetchStoreRequest());
     

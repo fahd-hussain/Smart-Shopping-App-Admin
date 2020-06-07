@@ -58,7 +58,7 @@ export class LoginScreen extends Component {
                 .catch((error) => console.warn(error));
         }
         if (!username || !password) {
-            this.setState({ isLoading: true });
+            this.setState({ isLoading: false });
             Alert.alert("Login Failed", "Username and/or Password field should not be empty", [
                 {
                     itemName: "Cancel",

@@ -13,24 +13,9 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const LINKS = [
     {
-        link: "PurchaseHistory",
-        title: "Purchase History",
-        iconName: "history",
-    },
-    {
         link: "Share",
         title: "Invite friends",
         iconName: "share",
-    },
-    {
-        link: "Help",
-        title: "Help",
-        iconName: "question-circle",
-    },
-    {
-        link: "AboutUs",
-        title: "About",
-        iconName: "info-circle",
     },
     {
         link: "Profile",

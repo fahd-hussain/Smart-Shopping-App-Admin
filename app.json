@@ -1,13 +1,13 @@
 {
   "expo": {
     "name": "Smart Shopping Admin",
-    "slug": "Smart-Shopping-Admin",
+    "slug": "SmartShoppingAdmin",
     "platforms": [
       "ios",
       "android",
       "web"
     ],
-    "version": "1.4.0",
+    "version": "1.2.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -23,11 +23,11 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.FYP.SmartShoppingApp",
-      "buildNumber": "1.4.0"
+      "bundleIdentifier": "com.FYP.SmartShoppingAppAdmin",
+      "buildNumber": "1.2.1"
     },
     "android": {
-      "package": "com.FYP.SmartShoppingApp",
+      "package": "com.FYP.SmartShoppingAppAdmin",
       "versionCode": 1
     }
   }
